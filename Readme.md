@@ -1,7 +1,7 @@
 # Проект «Большое путешествие»
 
 * Студент: [Григорий Мусихин](https://up.htmlacademy.ru/ecmascript-individual/2/user/2524397).
-* Наставник: `Неизвестно`.
+* Наставник: [Илья Локалин](https://htmlacademy.ru/profile/id1042585).
 
 ---
 
