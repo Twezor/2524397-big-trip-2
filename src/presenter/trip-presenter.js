@@ -1,7 +1,7 @@
 import { RenderPosition, render } from '../render.js';
 import RouteList from '../view/route-list-view.js';
 import RoutePoint from '../view/route-point-view.js';
-import EditForm from '../view/edit-form-view.js';
+import EventEditForm from '../view/new-point-form-view.js';
 
 const ROUTE_POINTS_QUANTITY = 3;
 
@@ -19,7 +19,7 @@ export default class TripPresenter {
       render(new RoutePoint(), this.routePointList.getElement());
     }
 
-    render(new EditForm(), this.routePointList.getElement(), RenderPosition.AFTERBEGIN);
+    render(new EventEditForm(), this.routePointList.getElement(), RenderPosition.AFTERBEGIN);
   }
 }
 

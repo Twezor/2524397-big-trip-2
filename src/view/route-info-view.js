@@ -1,6 +1,6 @@
 import { createElement } from '../render.js';
 
-function createNewRouteInfoTemplate() {
+function createTemplate() {
   return `<section class="trip-main__trip-info  trip-info">
             <div class="trip-info__main">
               <h1 class="trip-info__title">Amsterdam &mdash; Chamonix &mdash; Geneva</h1>
@@ -10,9 +10,9 @@ function createNewRouteInfoTemplate() {
           </section>`;
 }
 
-export default class NewRouteInfo {
+export default class RouteInfo {
   getTemplate() {
-    return createNewRouteInfoTemplate();
+    return createTemplate();
   }
 
   getElement(){
