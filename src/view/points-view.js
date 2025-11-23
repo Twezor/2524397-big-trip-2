@@ -4,7 +4,7 @@ function createRouteList() {
   return ('<ul class="trip-events__list"></ul>');
 }
 
-export default class RouteList {
+export default class PointsView {
   getTemplate() {
     return createRouteList();
   }

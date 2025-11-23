@@ -1,8 +1,8 @@
 import { RenderPosition, render } from './render.js';
-import RouteInfo from './view/route-info-view.js';
-import Filter from './view/filter-view.js';
-import Sort from './view/sort-view.js';
-import TripPresenter from './presenter/trip-presenter.js';
+import TripInfoView from './view/trip-info-view.js';
+import FilterView from './view/filter-view.js';
+import SortView from './view/sort-view.js';
+import PointsPresenter from './presenter/points-presenter.js';
 import PointsModel from './model/points-model.js';
 
 
@@ -11,11 +11,10 @@ const filterContainer = document.querySelector('.trip-controls__filters');
 const sortContainer = document.querySelector('.trip-events');
 const tripEventsContainer = document.querySelector('.trip-events');
 const pointsModel = new PointsModel();
-const tripPresenter = new TripPresenter({container: tripEventsContainer, pointsModel});
+const pointsPresenter = new PointsPresenter({container: tripEventsContainer, pointsModel});
 
+render(new TripInfoView(), tripMain, RenderPosition.AFTERBEGIN);
+render(new FilterView(), filterContainer);
+render(new SortView(), sortContainer);
 
-render(new RouteInfo(), tripMain, RenderPosition.AFTERBEGIN);
-render(new Filter(), filterContainer);
-render(new Sort(), sortContainer);
-
-tripPresenter.init();
+pointsPresenter.init();

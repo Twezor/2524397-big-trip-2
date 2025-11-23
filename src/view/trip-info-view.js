@@ -10,7 +10,7 @@ function createTemplate() {
           </section>`;
 }
 
-export default class RouteInfo {
+export default class TripInfoView {
   getTemplate() {
     return createTemplate();
   }
