@@ -8,79 +8,129 @@ export const mockOffers = [
         'id': 'b4c3e4e6-9053-42ce-b747-e281314baa31',
         'title': 'Upgrade to a business class',
         'price': getRandomInteger(100, 1000)
-      }
-    ]
-  },
-  {
-    'type': 'Bus',
-    'offers': [
+      },
       {
         'id': 'b4c3e4e6-9053-42ce-b747-e281314baa32',
-        'title': 'Upgrade to a business class',
+        'title': 'Add luggage',
         'price': getRandomInteger(100, 1000)
-      }
-    ]
-  },
-  {
-    'type': 'Train',
-    'offers': [
+      },
       {
         'id': 'b4c3e4e6-9053-42ce-b747-e281314baa33',
-        'title': 'Upgrade to a business class',
+        'title': 'Add meal',
+        'price': getRandomInteger(100, 1000)
+      },
+      {
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa34',
+        'title': 'Choose seats',
         'price': getRandomInteger(100, 1000)
       }
     ]
   },
   {
-    'type': 'Ship',
+    'type': 'bus',
+    'offers': [
+      {
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa31',
+        'title': 'Upgrade to a business class',
+        'price': getRandomInteger(100, 1000)
+      },
+      {
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa32',
+        'title': 'Add luggage',
+        'price': getRandomInteger(100, 1000)
+      },
+      {
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa33',
+        'title': 'Add meal',
+        'price': getRandomInteger(100, 1000)
+      },
+      {
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa34',
+        'title': 'Choose seats',
+        'price': getRandomInteger(100, 1000)
+      }
+    ]
+  },
+  {
+    'type': 'train',
+    'offers': [
+      {
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa31',
+        'title': 'Upgrade to a business class',
+        'price': getRandomInteger(100, 1000)
+      },
+      {
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa32',
+        'title': 'Add luggage',
+        'price': getRandomInteger(100, 1000)
+      },
+      {
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa33',
+        'title': 'Add meal',
+        'price': getRandomInteger(100, 1000)
+      },
+      {
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa34',
+        'title': 'Choose seats',
+        'price': getRandomInteger(100, 1000)
+      }
+    ]
+  },
+  {
+    'type': 'ship',
     'offers': [
       {
         'id': 'b4c3e4e6-9053-42ce-b747-e281314baa34',
-        'title': 'Upgrade to a business class',
+        'title': 'Choose seats',
         'price': getRandomInteger(100, 1000)
       }
     ]
   },
   {
-    'type': 'Drive',
+    'type': 'drive',
     'offers': [
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa35',
-        'title': 'Upgrade to a business class',
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa32',
+        'title': 'Add luggage',
         'price': getRandomInteger(100, 1000)
       }
     ]
   },
   {
-    'type': 'Flight',
+    'type': 'flight',
     'offers': [
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa36',
-        'title': 'Upgrade to a business class',
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa33',
+        'title': 'Add meal',
+        'price': getRandomInteger(100, 1000)
+      },
+      {
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa34',
+        'title': 'Choose seats',
         'price': getRandomInteger(100, 1000)
       }
     ]
   },
   {
-    'type': 'Check-in',
+    'type': 'check-in',
     'offers': []
   },
   {
-    'type': 'Sightseeing',
+    'type': 'sightseeing',
     'offers': [
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa38',
-        'title': 'Upgrade to a business class',
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa32',
+        'title': 'Add luggage',
         'price': getRandomInteger(100, 1000)
       }
     ]
   },
   {
-    'type': 'Restaurant',
+    'type': 'restaurant',
     'offers': [
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa39',
-        'title': 'Upgrade to a business class',
+        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa32',
+        'title': 'Add luggage',
         'price': getRandomInteger(100, 1000)
       }
     ]

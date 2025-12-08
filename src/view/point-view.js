@@ -1,7 +1,33 @@
 import { createElement } from '../render.js';
 
-function createPoint(point) {
-  const {type, basePrice} = point;
+function createOffersTemplate(checkedOffers){
+  //console.log(checkedOffers);
+
+  if (!checkedOffers || checkedOffers.length === 0) {
+    return '';
+  }
+
+  const offersItems = checkedOffers.map((checkedOffer) =>
+    `<li class="event__offer">
+      <span class="event__offer-title">${checkedOffer.title}</span>
+      &plus;&euro;&nbsp;
+      <span class="event__offer-price">${checkedOffer.price}</span>
+    </li>`
+  ).join('');
+
+  return (
+    `<h4 class="visually-hidden">Offers:</h4>
+     <ul class="event__selected-offers">
+       ${offersItems}
+     </ul>`
+  );
+}
+
+function createPoint(point, allOffers) {
+  const {type, basePrice, offers: selectedOfferIds} = point;
+  const currentTypeOffers = allOffers.find((array) => array.type === type);
+  const checkedOffers = currentTypeOffers.offers.filter((offer) => selectedOfferIds.includes(offer.id));
+  const offersTemplate = createOffersTemplate(checkedOffers);
 
   return (`
                 <li class="trip-events__item">
@@ -22,14 +48,7 @@ function createPoint(point) {
                 <p class="event__price">
                   &euro;&nbsp;<span class="event__price-value">${basePrice}</span>
                 </p>
-                <h4 class="visually-hidden">Offers:</h4>
-                <ul class="event__selected-offers">
-                  <li class="event__offer">
-                    <span class="event__offer-title">Add breakfast</span>
-                    &plus;&euro;&nbsp;
-                    <span class="event__offer-price">50</span>
-                  </li>
-                </ul>
+                ${offersTemplate}
                 <button class="event__favorite-btn event__favorite-btn--active" type="button">
                   <span class="visually-hidden">Add to favorite</span>
                   <svg class="event__favorite-icon" width="28" height="28" viewBox="0 0 28 28">
@@ -45,12 +64,13 @@ function createPoint(point) {
 }
 
 export default class PointView {
-  constructor ({point}) {
+  constructor ({point}, offers) {
     this.point = point;
+    this.offers = offers;
   }
 
   getTemplate() {
-    return createPoint(this.point);
+    return createPoint(this.point, this.offers);
   }
 
   getElement(){
