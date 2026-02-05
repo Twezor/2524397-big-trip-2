@@ -15,23 +15,30 @@ const defaultPoint = {
 };
 
 export default class PointsPresenter {
-  routePointList = new PointsView();
+  #routePointList = new PointsView();
+
+  #container = null;
+  #pointsModel = null;
 
   constructor({ container, pointsModel}) {
-    this.container = container;
-    this.pointsModel = pointsModel;
+    this.#container = container;
+    this.#pointsModel = pointsModel;
   }
 
+  #boardPoints = [];
+  #offers = [];
+  #destintations = [];
+
   init(){
-    this.boardPoints = [...this.pointsModel.getPoints()];
-    this.offers = [...this.pointsModel.getOffers()];
-    this.destintations = this.pointsModel.getDestintations();
+    this.#boardPoints = [...this.#pointsModel.points];
+    this.#offers = [...this.#pointsModel.offers];
+    this.#destintations = this.#pointsModel.destintations;
 
-    render(new NewPointView(defaultPoint, this.offers, this.destintations), this.routePointList.element, RenderPosition.AFTERBEGIN);
-    render(this.routePointList, this.container);
+    render(new NewPointView(defaultPoint, this.#offers, this.#destintations), this.#routePointList.element, RenderPosition.AFTERBEGIN);
+    render(this.#routePointList, this.#container);
 
-    for (let i = 0; i < this.boardPoints.length; i++){
-      render(new PointView({point: this.boardPoints[i]}, this.offers), this.routePointList.element);
+    for (let i = 0; i < this.#boardPoints.length; i++){
+      render(new PointView({point: this.#boardPoints[i]}, this.#offers), this.#routePointList.element);
     }
   }
 }
