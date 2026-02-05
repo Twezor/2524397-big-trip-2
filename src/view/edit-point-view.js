@@ -1,4 +1,4 @@
-import { createElement } from '../render.js';
+import AbstractView from '../framework/view/abstract-view.js';
 import { getRandomArrayElement } from '../utils.js';
 
 function createCheckedOffersTemplate(checkedOffers){
@@ -201,27 +201,16 @@ function createNewPointForm(point, allOffers, destinations) {
   `);
 }
 
-export default class EditPointView {
+export default class EditPointView extends AbstractView {
   constructor (points, offers, destinations) {
+    super();
     this.point = points;
     this.offers = offers;
     this.destinations = destinations;
   }
 
-  getTemplate() {
+  get template() {
     return createNewPointForm(this.point, this.offers, this.destinations);
-  }
-
-  getElement(){
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-    return this.element;
-  }
-
-  removeElement(){
-    this.element = null;
   }
 }
 
