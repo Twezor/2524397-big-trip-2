@@ -1,4 +1,4 @@
-import { RenderPosition, render, replace, remove } from '../framework/render.js';
+import { RenderPosition, render} from '../framework/render.js';
 import PointsView from '../view/points-view.js';
 import PointView from '../view/point-view.js';
 
@@ -28,21 +28,23 @@ export default class PointsPresenter {
 
   #boardPoints = [];
   #offers = [];
-  #destintations = [];
+  #destinations = [];
 
   init(){
     this.#boardPoints = [...this.#pointsModel.points];
     this.#offers = [...this.#pointsModel.offers];
-    this.#destintations = this.#pointsModel.destintations;
+    this.#destinations = this.#pointsModel.destinations;
 
     render(this.#routePointList, this.#container);
 
     for (let i = 0; i < this.#boardPoints.length; i++){
-      render(new PointView({
-        point: this.#boardPoints[i],
-        offers: this.#offers
-      }), this.#routePointList.element);
+      this.#renderPoint({point: this.#boardPoints[i], offers: this.#offers});
     }
+  }
+
+  #renderPoint({point, offers}) {
+    const pointComponent = new PointView({point, offers});
+    render(pointComponent, this.#routePointList.element, RenderPosition.AFTERBEGIN);
   }
 }
 
