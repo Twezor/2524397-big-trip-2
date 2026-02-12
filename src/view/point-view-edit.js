@@ -201,16 +201,30 @@ function createNewPointForm(point, allOffers, destinations) {
   `);
 }
 
-export default class EditPointView extends AbstractView {
-  constructor (points, offers, destinations) {
+export default class PointViewEdit extends AbstractView {
+
+  #point = null;
+  #offers = null;
+  #destinations = null;
+  #onFormSubmitClick = null;
+
+  constructor ({points, offers, destinations, onFormSubmit}) {
     super();
-    this.point = points;
-    this.offers = offers;
-    this.destinations = destinations;
+    this.#point = points;
+    this.#offers = offers;
+    this.#destinations = destinations;
+    this.#onFormSubmitClick = onFormSubmit;
+
+    this.element.querySelector('form').addEventListener('submit', this.formSubmitHandler);
   }
 
   get template() {
     return createNewPointForm(this.point, this.offers, this.destinations);
   }
+
+  #formSubmitHandler = (evt) => {
+    evt.preventDefault();
+    this.#onFormSubmitClick();
+  };
 }
 
