@@ -64,6 +64,7 @@ function createDestinationPhotoTemplate({ pictures = [] }){
 }
 
 function createNewPointForm(point, allOffers, destinations) {
+
   const {type, offers: selectedOfferIds} = point;
   const currentTypeOffers = allOffers.find((offer) => offer.type === type);
   const checkedOffers = currentTypeOffers.offers.filter((offer) => selectedOfferIds.includes(offer.id));
@@ -208,18 +209,18 @@ export default class PointViewEdit extends AbstractView {
   #destinations = null;
   #onFormSubmitClick = null;
 
-  constructor ({points, offers, destinations, onFormSubmit}) {
+  constructor ({point, offers, destinations, onFormSubmit}) {
     super();
-    this.#point = points;
+    this.#point = point;
     this.#offers = offers;
     this.#destinations = destinations;
     this.#onFormSubmitClick = onFormSubmit;
 
-    this.element.querySelector('form').addEventListener('submit', this.formSubmitHandler);
+    this.element.addEventListener('submit', this.#formSubmitHandler);
   }
 
   get template() {
-    return createNewPointForm(this.point, this.offers, this.destinations);
+    return createNewPointForm(this.#point, this.#offers, this.#destinations);
   }
 
   #formSubmitHandler = (evt) => {

@@ -1,6 +1,7 @@
-import { RenderPosition, render} from '../framework/render.js';
+import { RenderPosition, render, replace} from '../framework/render.js';
 import PointsView from '../view/points-view.js';
 import PointView from '../view/point-view.js';
+import PointViewEdit from '../view/point-view-edit.js';
 
 /*
 const defaultPoint = {
@@ -38,12 +39,47 @@ export default class PointsPresenter {
     render(this.#routePointList, this.#container);
 
     for (let i = 0; i < this.#boardPoints.length; i++){
-      this.#renderPoint({point: this.#boardPoints[i], offers: this.#offers});
+      this.#renderPoint({point: this.#boardPoints[i], offers: this.#offers, destinations: this.#destinations});
     }
   }
 
-  #renderPoint({point, offers}) {
-    const pointComponent = new PointView({point, offers});
+  #renderPoint({point, offers, destinations}) {
+
+    const escKeydownHandler = (evt) => {
+      if (evt.key === 'Escape') {
+        evt.preventDefault();
+        replacePointEditToPoint();
+        document.removeEventListener('keydown', escKeydownHandler);
+      }
+    };
+
+    const pointComponent = new PointView({
+      point,
+      offers,
+      onEditClick: () => {
+        replacePointToPointEdit();
+        document.addEventListener('keydown', escKeydownHandler);
+      }
+    });
+
+    const pointEditComponent = new PointViewEdit({
+      point,
+      offers,
+      destinations,
+      onFormSubmit: () => {
+        replacePointEditToPoint();
+        document.removeEventListener('keydown', escKeydownHandler);
+      }
+    });
+
+    function replacePointToPointEdit() {
+      replace(pointEditComponent, pointComponent);
+    }
+
+    function replacePointEditToPoint() {
+      replace(pointComponent, pointEditComponent);
+    }
+
     render(pointComponent, this.#routePointList.element, RenderPosition.AFTERBEGIN);
   }
 }
