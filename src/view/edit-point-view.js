@@ -47,22 +47,6 @@ function createOtherOffersTemplate(point, allOffers){
 
 }
 
-function createDestinationPhotoTemplate({ pictures = [] }){
-
-  if (!pictures || pictures.length === 0) {
-    return '';
-  }
-
-  let destinationPhotoTemplate = '';
-
-  for (let i = 0; i < pictures.length; i++){
-    destinationPhotoTemplate += `<img class="event__photo" src=${pictures[i].src} alt="${pictures[i].description}">`;
-  }
-
-  return destinationPhotoTemplate;
-
-}
-
 function createNewPointForm(point, allOffers, destinations) {
 
   const {type, offers: selectedOfferIds} = point;
@@ -71,7 +55,6 @@ function createNewPointForm(point, allOffers, destinations) {
   const checkedOffersTemplate = createCheckedOffersTemplate(checkedOffers);
   const otherOffersTemplate = createOtherOffersTemplate(point, allOffers);
   const destination = getRandomArrayElement(destinations);
-  const destinationPhoto = createDestinationPhotoTemplate(destination);
 
   if (!point) {
     point = {
@@ -157,10 +140,10 @@ function createNewPointForm(point, allOffers, destinations) {
 
         <div class="event__field-group  event__field-group--time">
           <label class="visually-hidden" for="event-start-time-1">From</label>
-          <input class="event__input  event__input--time" id="event-start-time-1" type="text" name="event-start-time" value="19/03/19 00:00">
+          <input class="event__input  event__input--time" id="event-start-time-1" type="text" name="event-start-time" value="18/03/19 12:25">
           &mdash;
           <label class="visually-hidden" for="event-end-time-1">To</label>
-          <input class="event__input  event__input--time" id="event-end-time-1" type="text" name="event-end-time" value="19/03/19 00:00">
+          <input class="event__input  event__input--time" id="event-end-time-1" type="text" name="event-end-time" value="18/03/19 13:35">
         </div>
 
         <div class="event__field-group  event__field-group--price">
@@ -168,11 +151,14 @@ function createNewPointForm(point, allOffers, destinations) {
             <span class="visually-hidden">Price</span>
             &euro;
           </label>
-          <input class="event__input  event__input--price" id="event-price-1" type="text" name="event-price" value="">
+          <input class="event__input  event__input--price" id="event-price-1" type="text" name="event-price" value="160">
         </div>
 
         <button class="event__save-btn  btn  btn--blue" type="submit">Save</button>
-        <button class="event__reset-btn" type="reset">Cancel</button>
+        <button class="event__reset-btn" type="reset">Delete</button>
+        <button class="event__rollup-btn" type="button">
+          <span class="visually-hidden">Open event</span>
+        </button>
       </header>
       <section class="event__details">
         <section class="event__section  event__section--offers">
@@ -180,29 +166,22 @@ function createNewPointForm(point, allOffers, destinations) {
 
           <div class="event__available-offers">
 
-            ${checkedOffersTemplate}
+          ${checkedOffersTemplate}
 
-            ${otherOffersTemplate}
-
+          ${otherOffersTemplate}
           </div>
         </section>
 
         <section class="event__section  event__section--destination">
           <h3 class="event__section-title  event__section-title--destination">Destination</h3>
           <p class="event__destination-description">${destination.description}</p>
-
-          <div class="event__photos-container">
-            <div class="event__photos-tape">
-              ${destinationPhoto}
-            </div>
-          </div>
         </section>
       </section>
     </form>
   `);
 }
 
-export default class PointViewEdit extends AbstractView {
+export default class EditPointView extends AbstractView {
 
   #point = null;
   #offers = null;
@@ -217,6 +196,7 @@ export default class PointViewEdit extends AbstractView {
     this.#onFormSubmitClick = onFormSubmit;
 
     this.element.addEventListener('submit', this.#formSubmitHandler);
+    this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#handleEditClick);
   }
 
   get template() {
@@ -224,6 +204,11 @@ export default class PointViewEdit extends AbstractView {
   }
 
   #formSubmitHandler = (evt) => {
+    evt.preventDefault();
+    this.#onFormSubmitClick();
+  };
+
+  #handleEditClick = (evt) => {
     evt.preventDefault();
     this.#onFormSubmitClick();
   };

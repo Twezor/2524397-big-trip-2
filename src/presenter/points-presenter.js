@@ -1,7 +1,7 @@
 import { RenderPosition, render, replace} from '../framework/render.js';
 import PointsView from '../view/points-view.js';
 import PointView from '../view/point-view.js';
-import PointViewEdit from '../view/point-view-edit.js';
+import EditPointView from '../view/edit-point-view.js';
 
 /*
 const defaultPoint = {
@@ -38,9 +38,7 @@ export default class PointsPresenter {
 
     render(this.#routePointList, this.#container);
 
-    for (let i = 0; i < this.#boardPoints.length; i++){
-      this.#renderPoint({point: this.#boardPoints[i], offers: this.#offers, destinations: this.#destinations});
-    }
+    this.#boardPoints.forEach((point) => this.#renderPoint({point, offers: this.#offers, destinations: this.#destinations}));
   }
 
   #renderPoint({point, offers, destinations}) {
@@ -62,7 +60,7 @@ export default class PointsPresenter {
       }
     });
 
-    const pointEditComponent = new PointViewEdit({
+    const pointEditComponent = new EditPointView({
       point,
       offers,
       destinations,
