@@ -11,15 +11,15 @@ export const mockDestinations = [
     'name': 'Geneva',
     'pictures': [
       {
-        'src': 'https://loremflickr.com/248/152?random=1',
+        'src': 'https://picsum.photos/800/600?random=1',
         'description': 'Geneva parliament building'
       },
       {
-        'src': 'https://loremflickr.com/248/152?random=2',
+        'src': 'https://picsum.photos/800/600?random=2',
         'description': 'Geneva parliament building'
       },
       {
-        'src': 'https://loremflickr.com/248/152?random=3',
+        'src': 'https://picsum.photos/800/600?random=3',
         'description': 'Geneva parliament building'
       }
     ]
@@ -30,7 +30,7 @@ export const mockDestinations = [
     'name': 'Chamonix',
     'pictures': [
       {
-        'src': 'https://loremflickr.com/248/152?random=5',
+        'src': 'https://picsum.photos/800/600?random=1',
         'description': 'Chamonix parliament building'
       }
     ]

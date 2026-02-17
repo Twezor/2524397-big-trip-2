@@ -1,4 +1,4 @@
-import { createElement } from '../render.js';
+import AbstractView from '../framework/view/abstract-view.js';
 
 function createOffersTemplate(checkedOffers){
 
@@ -63,25 +63,27 @@ function createPoint(point, allOffers) {
 `);
 }
 
-export default class PointView {
-  constructor ({point}, offers) {
-    this.point = point;
-    this.offers = offers;
+export default class PointView extends AbstractView {
+
+  #point = null;
+  #offers = null;
+  #onEditButtonClick = null;
+
+  constructor ({point, offers, onEditClick}) {
+    super();
+    this.#point = point;
+    this.#offers = offers;
+    this.#onEditButtonClick = onEditClick;
+
+    this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#handleEditClick);
   }
 
-  getTemplate() {
-    return createPoint(this.point, this.offers);
+  get template() {
+    return createPoint(this.#point, this.#offers);
   }
 
-  getElement(){
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-    return this.element;
-  }
-
-  removeElement(){
-    this.element = null;
-  }
+  #handleEditClick = (evt) => {
+    evt.preventDefault();
+    this.#onEditButtonClick();
+  };
 }
