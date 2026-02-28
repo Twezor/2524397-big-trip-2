@@ -2,6 +2,8 @@ import { RenderPosition, render, replace} from '../framework/render.js';
 import PointsView from '../view/points-view.js';
 import PointView from '../view/point-view.js';
 import EditPointView from '../view/edit-point-view.js';
+import ListEmptyView from '../view/list-empty-view.js';
+import SortView from '../view/sort-view.js';
 
 /*
 const defaultPoint = {
@@ -17,7 +19,9 @@ const defaultPoint = {
 */
 
 export default class PointsPresenter {
+
   #routePointList = new PointsView();
+  #routeListEmpty = new ListEmptyView();
 
   #container = null;
   #pointsModel = null;
@@ -36,8 +40,13 @@ export default class PointsPresenter {
     this.#offers = [...this.#pointsModel.offers];
     this.#destinations = this.#pointsModel.destinations;
 
-    render(this.#routePointList, this.#container);
+    if (this.#boardPoints.length === 0) {
+      render(this.#routeListEmpty, this.#container);
+      return;
+    }
 
+    render(new SortView(), this.#container);
+    render(this.#routePointList, this.#container);
     this.#boardPoints.forEach((point) => this.#renderPoint({point, offers: this.#offers, destinations: this.#destinations}));
   }
 
