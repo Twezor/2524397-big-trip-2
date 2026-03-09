@@ -42,14 +42,26 @@ export default class PointsPresenter {
     this.#destinations = this.#pointsModel.destinations;
 
     if (this.#boardPoints.length === 0) {
-      render(this.#routeListEmpty, this.#container);
+      this.#renderNoPoints();
       return;
     }
 
-    render(this.#sortPoints, this.#container);
-    render(this.#routePointList, this.#container);
-    this.#boardPoints.forEach((point) => this.#renderPoint({point, offers: this.#offers, destinations: this.#destinations}));
+    this.#renderSort();
+    this.#renderPointList();
 
+    this.#boardPoints.forEach((point) => this.#renderPoint({point, offers: this.#offers, destinations: this.#destinations}));
+  }
+
+  #renderNoPoints(){
+    render(this.#routeListEmpty, this.#container);
+  }
+
+  #renderSort() {
+    render(this.#sortPoints, this.#container);
+  }
+
+  #renderPointList() {
+    render(this.#routePointList, this.#container);
   }
 
   #renderPoint({point, offers, destinations}) {
