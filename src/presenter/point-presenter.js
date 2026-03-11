@@ -1,4 +1,4 @@
-import { RenderPosition, render, replace} from '../framework/render.js';
+import { RenderPosition, remove, render, replace} from '../framework/render.js';
 import PointView from '../view/point-view.js';
 import EditPointView from '../view/edit-point-view.js';
 
@@ -13,6 +13,10 @@ export default class PointPresenter {
   }
 
   init({point, offers, destinations}) {
+
+    const prevPointComponent = this.#pointComponent;
+    const prevPointEditComponent = this.#pointEditComponent;
+
     this.#escKeydownHandler = (evt) => {
       if (evt.key === 'Escape') {
         evt.preventDefault();
@@ -44,7 +48,26 @@ export default class PointPresenter {
       }
     });
 
-    render(this.#pointComponent, this.#container, RenderPosition.AFTERBEGIN);
+    if (prevPointComponent === null || prevPointEditComponent === null) {
+      render(this.#pointComponent, this.#container, RenderPosition.AFTERBEGIN);
+      return;
+    }
+
+    if (this.#container.contains(prevPointComponent.element)) {
+      replace(this.#pointComponent, prevPointComponent);
+    }
+
+    if (this.#container.contains(prevPointEditComponent.element)) {
+      replace(this.#pointEditComponent, prevPointEditComponent);
+    }
+
+    remove(prevPointComponent);
+    remove(prevPointEditComponent);
+  }
+
+  destroy(){
+    remove(this.#pointComponent);
+    remove(this.#pointEditComponent);
   }
 
   #replacePointToEdit() {
