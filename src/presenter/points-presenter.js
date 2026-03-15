@@ -3,6 +3,7 @@ import PointsView from '../view/points-view.js';
 import ListEmptyView from '../view/list-empty-view.js';
 import SortView from '../view/sort-view.js';
 import PointPresenter from './point-presenter.js';
+import { updateItem } from '../utils.js';
 
 /*
 const defaultPoint = {
@@ -25,7 +26,7 @@ export default class PointsPresenter {
 
   #container = null;
   #pointsModel = null;
-  #pointPresenters = new Map();
+  #pointsPresenters = new Map();
 
   constructor({ container, pointsModel}) {
     this.#container = container;
@@ -64,10 +65,21 @@ export default class PointsPresenter {
     render(this.#routePointList, this.#container);
   }
 
+  #onFavoriteClick = (updatedPoint) => {
+    this.#boardPoints = updateItem(this.#boardPoints, updatedPoint);
+    this.#pointsPresenters.get(updatedPoint.id).init({
+      point: updatedPoint,
+      offers: this.#offers,
+      destinations: this.#destinations
+    });
+  };
+
   #renderPoint({point, offers, destinations}) {
     const pointPresenter = new PointPresenter({
       container: this.#routePointList.element,
+      onFavoriteClick: this.#onFavoriteClick
     });
     pointPresenter.init({point, offers, destinations});
+    this.#pointsPresenters.set(point.id, pointPresenter);
   }
 }
