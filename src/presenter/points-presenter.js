@@ -1,6 +1,6 @@
 import { render} from '../framework/render.js';
 import PointsView from '../view/points-view.js';
-import ListEmptyView from '../view/list-empty-view.js';
+import ListEmptyView from '../view/empty-list-view.js';
 import SortView from '../view/sort-view.js';
 import PointPresenter from './point-presenter.js';
 import { updateItem } from '../utils.js';
