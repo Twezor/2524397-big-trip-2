@@ -65,6 +65,10 @@ export default class PointsPresenter {
     render(this.#routePointList, this.#container);
   }
 
+  #handleModeChange = () => {
+    this.#pointsPresenters.forEach((presenter) => presenter.resetView());
+  };
+
   #onFavoriteClick = (updatedPoint) => {
     this.#boardPoints = updateItem(this.#boardPoints, updatedPoint);
     this.#pointsPresenters.get(updatedPoint.id).init({
@@ -77,7 +81,8 @@ export default class PointsPresenter {
   #renderPoint({point, offers, destinations}) {
     const pointPresenter = new PointPresenter({
       container: this.#routePointList.element,
-      onFavoriteClick: this.#onFavoriteClick
+      onFavoriteClick: this.#onFavoriteClick,
+      onModeChange: this.#handleModeChange,
     });
     pointPresenter.init({point, offers, destinations});
     this.#pointsPresenters.set(point.id, pointPresenter);

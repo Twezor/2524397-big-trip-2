@@ -2,6 +2,10 @@ import { RenderPosition, remove, render, replace} from '../framework/render.js';
 import PointView from '../view/point-view.js';
 import EditPointView from '../view/edit-point-view.js';
 
+const Mode = {
+  DEFAULT: 'DEFAULT',
+  EDITING: 'EDITING'
+};
 export default class PointPresenter {
   #container = null;
   #point = null;
@@ -11,10 +15,13 @@ export default class PointPresenter {
   #pointEditComponent = null;
   #escKeydownHandler = null;
   #onFavoriteClick = null;
+  #handleModeChange = null;
+  #mode = Mode.DEFAULT;
 
-  constructor({container, onFavoriteClick}) {
+  constructor({container, onFavoriteClick, onModeChange}) {
     this.#container = container;
     this.#onFavoriteClick = onFavoriteClick;
+    this.#handleModeChange = onModeChange;
   }
 
   init({point, offers, destinations}) {
@@ -62,11 +69,11 @@ export default class PointPresenter {
       return;
     }
 
-    if (this.#container.contains(prevPointComponent.element)) {
+    if (this.#mode === Mode.DEFAULT) {
       replace(this.#pointComponent, prevPointComponent);
     }
 
-    if (this.#container.contains(prevPointEditComponent.element)) {
+    if (this.#mode === Mode.EDITING) {
       replace(this.#pointEditComponent, prevPointEditComponent);
     }
 
@@ -79,12 +86,21 @@ export default class PointPresenter {
     remove(this.#pointEditComponent);
   }
 
+  resetView() {
+    if (this.#mode !== Mode.DEFAULT) {
+      this.#replaceEditToPoint();
+    }
+  }
+
   #replacePointToEdit() {
     replace(this.#pointEditComponent, this.#pointComponent);
+    this.#handleModeChange();
+    this.#mode = Mode.EDITING;
   }
 
   #replaceEditToPoint() {
     replace(this.#pointComponent, this.#pointEditComponent);
+    this.#mode = Mode.DEFAULT;
   }
 
   #favoriteStatusChange = () => {
