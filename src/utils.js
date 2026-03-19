@@ -17,4 +17,8 @@ function humanizeDate(date) {
   return date ? dayjs(date).format(DATE_FORMAT) : '';
 }
 
-export {getRandomArrayElement, getRandomInteger, humanizeDate};
+function updateItem(items, update) {
+  return items.map((item) => item.id === update.id ? update : item);
+}
+
+export {getRandomArrayElement, getRandomInteger, humanizeDate, updateItem};

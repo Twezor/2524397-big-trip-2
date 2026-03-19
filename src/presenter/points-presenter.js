@@ -1,9 +1,9 @@
-import { RenderPosition, render, replace} from '../framework/render.js';
+import { render} from '../framework/render.js';
 import PointsView from '../view/points-view.js';
-import PointView from '../view/point-view.js';
-import EditPointView from '../view/edit-point-view.js';
-import ListEmptyView from '../view/list-empty-view.js';
+import ListEmptyView from '../view/empty-list-view.js';
 import SortView from '../view/sort-view.js';
+import PointPresenter from './point-presenter.js';
+import { updateItem } from '../utils.js';
 
 /*
 const defaultPoint = {
@@ -22,9 +22,11 @@ export default class PointsPresenter {
 
   #routePointList = new PointsView();
   #routeListEmpty = new ListEmptyView();
+  #sortPoints = new SortView();
 
   #container = null;
   #pointsModel = null;
+  #pointsPresenters = new Map();
 
   constructor({ container, pointsModel}) {
     this.#container = container;
@@ -41,53 +43,48 @@ export default class PointsPresenter {
     this.#destinations = this.#pointsModel.destinations;
 
     if (this.#boardPoints.length === 0) {
-      render(this.#routeListEmpty, this.#container);
+      this.#renderNoPoints();
       return;
     }
 
-    render(new SortView(), this.#container);
-    render(this.#routePointList, this.#container);
+    this.#renderSort();
+    this.#renderPointList();
+
     this.#boardPoints.forEach((point) => this.#renderPoint({point, offers: this.#offers, destinations: this.#destinations}));
   }
 
+  #renderNoPoints(){
+    render(this.#routeListEmpty, this.#container);
+  }
+
+  #renderSort() {
+    render(this.#sortPoints, this.#container);
+  }
+
+  #renderPointList() {
+    render(this.#routePointList, this.#container);
+  }
+
+  #handleModeChange = () => {
+    this.#pointsPresenters.forEach((presenter) => presenter.resetView());
+  };
+
+  #onFavoriteClick = (updatedPoint) => {
+    this.#boardPoints = updateItem(this.#boardPoints, updatedPoint);
+    this.#pointsPresenters.get(updatedPoint.id).init({
+      point: updatedPoint,
+      offers: this.#offers,
+      destinations: this.#destinations
+    });
+  };
+
   #renderPoint({point, offers, destinations}) {
-
-    const escKeydownHandler = (evt) => {
-      if (evt.key === 'Escape') {
-        evt.preventDefault();
-        replacePointEditToPoint();
-        document.removeEventListener('keydown', escKeydownHandler);
-      }
-    };
-
-    const pointComponent = new PointView({
-      point,
-      offers,
-      onEditClick: () => {
-        replacePointToPointEdit();
-        document.addEventListener('keydown', escKeydownHandler);
-      }
+    const pointPresenter = new PointPresenter({
+      container: this.#routePointList.element,
+      onFavoriteClick: this.#onFavoriteClick,
+      onModeChange: this.#handleModeChange,
     });
-
-    const pointEditComponent = new EditPointView({
-      point,
-      offers,
-      destinations,
-      onFormSubmit: () => {
-        replacePointEditToPoint();
-        document.removeEventListener('keydown', escKeydownHandler);
-      }
-    });
-
-    function replacePointToPointEdit() {
-      replace(pointEditComponent, pointComponent);
-    }
-
-    function replacePointEditToPoint() {
-      replace(pointComponent, pointEditComponent);
-    }
-
-    render(pointComponent, this.#routePointList.element, RenderPosition.AFTERBEGIN);
+    pointPresenter.init({point, offers, destinations});
+    this.#pointsPresenters.set(point.id, pointPresenter);
   }
 }
-

@@ -23,7 +23,7 @@ function createOffersTemplate(checkedOffers){
   );
 }
 
-function createPoint(point, allOffers) {
+function createPoint(point, allOffers, favoritStatus) {
   const {type, basePrice, offers: selectedOfferIds} = point;
   const currentTypeOffers = allOffers.find((offer) => offer.type === type);
   const checkedOffers = currentTypeOffers.offers.filter((offer) => selectedOfferIds.includes(offer.id));
@@ -49,7 +49,7 @@ function createPoint(point, allOffers) {
       &euro;&nbsp;<span class="event__price-value">${basePrice}</span>
     </p>
     ${offersTemplate}
-    <button class="event__favorite-btn event__favorite-btn--active" type="button">
+    <button class="event__favorite-btn event__favorite-btn--${favoritStatus}" type="button">
       <span class="visually-hidden">Add to favorite</span>
       <svg class="event__favorite-icon" width="28" height="28" viewBox="0 0 28 28">
         <path d="M14 21l-8.22899 4.3262 1.57159-9.1631L.685209 9.67376 9.8855 8.33688 14 0l4.1145 8.33688 9.2003 1.33688-6.6574 6.48934 1.5716 9.1631L14 21z"/>
@@ -68,22 +68,31 @@ export default class PointView extends AbstractView {
   #point = null;
   #offers = null;
   #onEditButtonClick = null;
+  #onFavoriteClick = null;
 
-  constructor ({point, offers, onEditClick}) {
+  constructor ({point, offers, onEditClick, onFavoriteClick}) {
     super();
     this.#point = point;
     this.#offers = offers;
     this.#onEditButtonClick = onEditClick;
+    this.#onFavoriteClick = onFavoriteClick;
 
     this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#handleEditClick);
+    this.element.querySelector('.event__favorite-btn').addEventListener('click', this.#handleFavoriteClick);
   }
 
   get template() {
-    return createPoint(this.#point, this.#offers);
+    const favoritStatus = this.#point.isFavorite ? 'active' : 'unactive';
+    return createPoint(this.#point, this.#offers, favoritStatus);
   }
 
   #handleEditClick = (evt) => {
     evt.preventDefault();
     this.#onEditButtonClick();
+  };
+
+  #handleFavoriteClick = (evt) => {
+    evt.preventDefault();
+    this.#onFavoriteClick();
   };
 }
