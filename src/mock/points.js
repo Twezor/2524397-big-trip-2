@@ -111,8 +111,16 @@ const mockPoints = [
   }
 ];
 
+let pointCounter = 0;
+
 function getRandomPoint() {
-  return getRandomArrayElement(mockPoints);
+  const originalPoint = getRandomArrayElement(mockPoints);
+
+  return {
+    ...originalPoint,
+    id: `${originalPoint.id}+${pointCounter++}`,
+    offers: [...originalPoint.offers]
+  };
 }
 
 export {getRandomPoint};

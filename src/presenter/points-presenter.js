@@ -67,6 +67,7 @@ export default class PointsPresenter {
 
   #handleModeChange = () => {
     this.#pointsPresenters.forEach((presenter) => presenter.resetView());
+    console.log(this.#pointsPresenters);
   };
 
   #onFavoriteClick = (updatedPoint) => {

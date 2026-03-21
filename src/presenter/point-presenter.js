@@ -100,6 +100,7 @@ export default class PointPresenter {
 
   #replaceEditToPoint() {
     replace(this.#pointComponent, this.#pointEditComponent);
+    document.removeEventListener('keydown', this.#escKeydownHandler);
     this.#mode = Mode.DEFAULT;
   }
 
