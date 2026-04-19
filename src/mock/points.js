@@ -5,7 +5,7 @@ const mockPoints = [
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c',
     'basePrice': getRandomInteger(100, 1000),
     'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateTo': '2019-07-11T23:55:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -18,8 +18,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c2',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-12T01:55:56.845Z',
+    'dateTo': '2019-07-13T02:55:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -30,8 +30,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c3',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-14T03:55:56.845Z',
+    'dateTo': '2019-07-15T04:55:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -42,8 +42,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c4',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-16T05:55:56.845Z',
+    'dateTo': '2019-07-17T06:22:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -54,8 +54,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c5',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-18T07:55:56.845Z',
+    'dateTo': '2019-07-19T08:22:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -66,8 +66,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c6',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-20T09:55:56.845Z',
+    'dateTo': '2019-07-21T10:22:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -78,8 +78,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c7',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-22T11:55:56.845Z',
+    'dateTo': '2019-07-23T12:22:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [],
@@ -88,8 +88,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c8',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-24T13:55:56.845Z',
+    'dateTo': '2019-07-25T14:22:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -100,8 +100,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c9',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-26T15:55:56.845Z',
+    'dateTo': '2019-07-27T16:22:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [

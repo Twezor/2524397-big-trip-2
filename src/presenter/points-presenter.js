@@ -76,7 +76,6 @@ export default class PointsPresenter {
       offers: this.#offers,
       destinations: this.#destinations
     });
-    console.log(this.#pointsPresenters);
   };
 
   #renderPoint({point, offers, destinations}) {

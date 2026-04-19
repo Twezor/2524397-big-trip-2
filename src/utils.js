@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 
-const DATE_FORMAT = 'MMM D';
+const DATE_FORMAT = 'D MMM';
+const TIME_FORMAT = 'HH:mm';
 
 function getRandomArrayElement(items) {
   return items[Math.floor(Math.random() * items.length)];
@@ -17,8 +18,12 @@ function humanizeDate(date) {
   return date ? dayjs(date).format(DATE_FORMAT) : '';
 }
 
+function humanizeTime(date) {
+  return date ? dayjs(date).format(TIME_FORMAT) : '';
+}
+
 function updateItem(items, update) {
   return items.map((item) => item.id === update.id ? update : item);
 }
 
-export {getRandomArrayElement, getRandomInteger, humanizeDate, updateItem};
+export {getRandomArrayElement, getRandomInteger, humanizeDate, humanizeTime, updateItem};
