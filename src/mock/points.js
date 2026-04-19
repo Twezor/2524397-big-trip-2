@@ -111,8 +111,13 @@ const mockPoints = [
   }
 ];
 
+const usedPointIds = new Set();
+
 function getRandomPoint() {
-  return getRandomArrayElement(mockPoints);
+  const availablePoints = mockPoints.filter((point) => !usedPointIds.has(point.id));
+  const randomPoint = getRandomArrayElement(availablePoints);
+  usedPointIds.add(randomPoint.id);
+  return randomPoint;
 }
 
 export {getRandomPoint};
