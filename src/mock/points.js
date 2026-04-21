@@ -5,7 +5,7 @@ const mockPoints = [
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c',
     'basePrice': getRandomInteger(100, 1000),
     'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateTo': '2019-07-10T23:51:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -18,8 +18,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c2',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-11T01:55:56.845Z',
+    'dateTo': '2019-07-11T02:45:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -30,8 +30,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c3',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-11T03:55:56.845Z',
+    'dateTo': '2019-07-11T04:11:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -42,8 +42,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c4',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-11T05:55:56.845Z',
+    'dateTo': '2019-07-11T06:16:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -54,8 +54,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c5',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-11T07:55:56.845Z',
+    'dateTo': '2019-07-11T08:22:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -66,8 +66,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c6',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-11T09:55:56.845Z',
+    'dateTo': '2019-07-11T10:33:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -78,8 +78,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c7',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-08T11:55:56.845Z',
+    'dateTo': '2019-07-08T12:05:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [],
@@ -88,8 +88,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c8',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-10T13:55:56.845Z',
+    'dateTo': '2019-07-10T14:14:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -100,8 +100,8 @@ const mockPoints = [
   {
     'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c9',
     'basePrice': getRandomInteger(100, 1000),
-    'dateFrom': '2019-07-10T22:55:56.845Z',
-    'dateTo': '2019-07-11T11:22:13.375Z',
+    'dateFrom': '2019-07-09T15:55:56.845Z',
+    'dateTo': '2019-07-09T16:58:13.375Z',
     'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
     'isFavorite': false,
     'offers': [
@@ -111,8 +111,13 @@ const mockPoints = [
   }
 ];
 
+const usedPointIds = new Set();
+
 function getRandomPoint() {
-  return getRandomArrayElement(mockPoints);
+  const availablePoints = mockPoints.filter((point) => !usedPointIds.has(point.id));
+  const randomPoint = getRandomArrayElement(availablePoints);
+  usedPointIds.add(randomPoint.id);
+  return randomPoint;
 }
 
 export {getRandomPoint};
