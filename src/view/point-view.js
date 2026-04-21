@@ -1,5 +1,5 @@
 import AbstractView from '../framework/view/abstract-view.js';
-import { humanizeDate, humanizeTime } from '../utils.js';
+import { humanizeDate, humanizeTime, eventMinuteDuration } from '../utils.js';
 
 function createOffersTemplate(checkedOffers){
 
@@ -30,9 +30,9 @@ function createPoint(point, allOffers, favoritStatus) {
   const checkedOffers = currentTypeOffers.offers.filter((offer) => selectedOfferIds.includes(offer.id));
   const offersTemplate = createOffersTemplate(checkedOffers);
   const dateEventFrom = humanizeDate(dateFrom);
-  const dateEventTo = humanizeDate(dateTo);
   const timeEventFrom = humanizeTime(dateFrom);
   const timeEventTo = humanizeTime(dateTo);
+  const eventDurationTime = eventMinuteDuration(dateTo, dateFrom);
 
   return (`
     <li class="trip-events__item">
@@ -48,7 +48,7 @@ function createPoint(point, allOffers, favoritStatus) {
         &mdash;
         <time class="event__end-time" datetime="2019-03-18T13:35">${timeEventTo}</time>
       </p>
-      <p class="event__duration">40M</p>
+      <p class="event__duration">${eventDurationTime}</p>
     </div>
     <p class="event__price">
       &euro;&nbsp;<span class="event__price-value">${basePrice}</span>

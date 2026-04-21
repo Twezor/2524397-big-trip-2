@@ -3,7 +3,8 @@ import PointsView from '../view/points-view.js';
 import ListEmptyView from '../view/empty-list-view.js';
 import SortView from '../view/sort-view.js';
 import PointPresenter from './point-presenter.js';
-import { updateItem } from '../utils.js';
+import { updateItem, sortByTime, sortByDate, sortByPrice } from '../utils.js';
+import { SortType } from '../const.js';
 
 /*
 const defaultPoint = {
@@ -22,7 +23,7 @@ export default class PointsPresenter {
 
   #routePointList = new PointsView();
   #routeListEmpty = new ListEmptyView();
-  #sortPoints = new SortView();
+  #sortPoints = null;
 
   #container = null;
   #pointsModel = null;
@@ -36,6 +37,7 @@ export default class PointsPresenter {
   #boardPoints = [];
   #offers = [];
   #destinations = [];
+  #currentSortType = SortType.SORT_BY_DATE;
 
   init(){
     this.#boardPoints = [...this.#pointsModel.points];
@@ -49,6 +51,7 @@ export default class PointsPresenter {
 
     this.#renderSort();
     this.#renderPointList();
+    this.#sortPointsList(this.#currentSortType);
 
     this.#boardPoints.forEach((point) => this.#renderPoint({point, offers: this.#offers, destinations: this.#destinations}));
   }
@@ -57,8 +60,44 @@ export default class PointsPresenter {
     render(this.#routeListEmpty, this.#container);
   }
 
+  #sortPointsList(sortType){
+
+    switch(sortType){
+      case SortType.SORT_BY_DATE:
+        this.#boardPoints.sort(sortByDate);
+        break;
+      case SortType.SORT_BY_TIME:
+        this.#boardPoints.sort(sortByTime);
+        break;
+      case SortType.SORT_BY_PRICE:
+        this.#boardPoints.sort(sortByPrice);
+        break;
+    }
+
+    this.#currentSortType = sortType;
+  }
+
+  #handleSortTypeChange = (sortType) => {
+    if (this.#currentSortType === sortType) {
+      return;
+    }
+
+    this.#sortPointsList(sortType);
+    this.#clearPointsList();
+    this.#boardPoints.forEach((point) => this.#renderPoint({point, offers: this.#offers, destinations: this.#destinations}));
+  };
+
   #renderSort() {
+    this.#sortPoints = new SortView({
+      onSortTypeChange: this.#handleSortTypeChange
+    });
+
     render(this.#sortPoints, this.#container);
+  }
+
+  #clearPointsList(){
+    this.#pointsPresenters.forEach((presenter) => presenter.destroy());
+    this.#pointsPresenters.clear();
   }
 
   #renderPointList() {
