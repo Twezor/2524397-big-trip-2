@@ -26,6 +26,17 @@ function eventMinuteDuration(dateTo, dateFrom) {
   return dayjs(dateTo).diff(dayjs(dateFrom), 'minute');
 }
 
+function getFormattedEventDuration(dateTo, dateFrom) {
+  const minutes = eventMinuteDuration(dateTo, dateFrom);
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+
+  if (hours > 0) {
+    return `${String(hours).padStart(2, '0')}H ${String(mins).padStart(2, '0')}M`;
+  }
+  return `${mins}M`;
+}
+
 function updateItem(items, update) {
   return items.map((item) => item.id === update.id ? update : item);
 }
@@ -42,4 +53,4 @@ function sortByPrice(pointA, pointB) {
   return pointA.basePrice - pointB.basePrice;
 }
 
-export {getRandomArrayElement, getRandomInteger, humanizeDate, humanizeTime, eventMinuteDuration, updateItem, sortByTime, sortByDate, sortByPrice};
+export {getRandomArrayElement, getRandomInteger, humanizeDate, humanizeTime, getFormattedEventDuration, eventMinuteDuration, updateItem, sortByTime, sortByDate, sortByPrice};

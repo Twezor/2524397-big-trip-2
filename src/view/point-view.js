@@ -1,5 +1,5 @@
 import AbstractView from '../framework/view/abstract-view.js';
-import { humanizeDate, humanizeTime, eventMinuteDuration } from '../utils.js';
+import { humanizeDate, humanizeTime, getFormattedEventDuration } from '../utils.js';
 
 function createOffersTemplate(checkedOffers){
 
@@ -32,7 +32,7 @@ function createPoint(point, allOffers, favoritStatus) {
   const dateEventFrom = humanizeDate(dateFrom);
   const timeEventFrom = humanizeTime(dateFrom);
   const timeEventTo = humanizeTime(dateTo);
-  const eventDurationTime = eventMinuteDuration(dateTo, dateFrom);
+  const eventDurationTime = getFormattedEventDuration(dateTo, dateFrom);
 
   return (`
     <li class="trip-events__item">
