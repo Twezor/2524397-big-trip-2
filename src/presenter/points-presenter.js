@@ -4,7 +4,7 @@ import ListEmptyView from '../view/empty-list-view.js';
 import SortView from '../view/sort-view.js';
 import PointPresenter from './point-presenter.js';
 import { updateItem, sortByTime, sortByDate, sortByPrice } from '../utils.js';
-import { SortType } from '../const.js';
+import { SortType } from '../consts.js';
 
 /*
 const defaultPoint = {
@@ -72,6 +72,9 @@ export default class PointsPresenter {
       case SortType.SORT_BY_PRICE:
         this.#boardPoints.sort(sortByPrice);
         break;
+      default:
+        this.#boardPoints.sort(sortByDate);
+        throw new Error(`Метод для сортировки не предоставлен для типа: ${sortType}`);
     }
 
     this.#currentSortType = sortType;

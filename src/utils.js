@@ -31,7 +31,7 @@ function updateItem(items, update) {
 }
 
 function sortByDate(pointA, pointB) {
-  return dayjs(pointA.dateFrom).diff(dayjs(pointB.dateFrom));
+  return dayjs(pointB.dateFrom).diff(dayjs(pointA.dateFrom));
 }
 
 function sortByTime(pointA, pointB) {
