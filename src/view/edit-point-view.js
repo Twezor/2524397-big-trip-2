@@ -1,4 +1,4 @@
-import AbstractView from '../framework/view/abstract-view.js';
+import AbstractStatefulView from '../framework/view/abstract-stateful-view.js';
 import { getRandomArrayElement } from '../utils.js';
 
 function createCheckedOffersTemplate(checkedOffers){
@@ -20,6 +20,25 @@ function createCheckedOffersTemplate(checkedOffers){
 
   return offersItems;
 
+}
+
+function createPictureTemplate(destination){
+  const pictures = destination.pictures;
+  console.log(destination.pictures);
+  if (!pictures) {
+    return '';
+  }
+
+  const pictureItems = pictures.map((picture) =>
+    `<img class="event__photo" src="${picture.src}" alt="Event photo">`
+  ).join('');
+
+  return (`
+    <div class="event__photos-container">
+      <div class="event__photos-tape">
+        ${pictureItems}
+      </div>
+    </div>`);
 }
 
 function createOtherOffersTemplate(point, allOffers){
@@ -55,6 +74,7 @@ function createNewPointForm(point, allOffers, destinations) {
   const checkedOffersTemplate = createCheckedOffersTemplate(checkedOffers);
   const otherOffersTemplate = createOtherOffersTemplate(point, allOffers);
   const destination = getRandomArrayElement(destinations);
+  const pictureTemplate = createPictureTemplate(destination);
 
   if (!point) {
     point = {
@@ -175,13 +195,14 @@ function createNewPointForm(point, allOffers, destinations) {
         <section class="event__section  event__section--destination">
           <h3 class="event__section-title  event__section-title--destination">Destination</h3>
           <p class="event__destination-description">${destination.description}</p>
+          ${pictureTemplate}
         </section>
       </section>
     </form>
   `);
 }
 
-export default class EditPointView extends AbstractView {
+export default class EditPointView extends AbstractStatefulView {
 
   #point = null;
   #offers = null;
@@ -195,8 +216,8 @@ export default class EditPointView extends AbstractView {
     this.#destinations = destinations;
     this.#onFormSubmitClick = onFormSubmit;
 
-    this.element.addEventListener('submit', this.#formSubmitHandler);
-    this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#handleEditClick);
+    this._setState(EditPointView.parsePointToState({point}));
+    this._restoreHandlers();
   }
 
   get template() {
@@ -212,5 +233,13 @@ export default class EditPointView extends AbstractView {
     evt.preventDefault();
     this.#onFormSubmitClick();
   };
+
+  _restoreHandlers(){
+    this.element.addEventListener('submit', this.#formSubmitHandler);
+    this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#handleEditClick);
+  }
+
+  static parsePointToState = ({point}) => ({point});
+  static parseStateToPoint = (state) => state.point;
 }
 

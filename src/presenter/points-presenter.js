@@ -29,7 +29,7 @@ export default class PointsPresenter {
   #pointsModel = null;
   #pointsPresenters = new Map();
 
-  constructor({ container, pointsModel}) {
+  constructor({container, pointsModel}) {
     this.#container = container;
     this.#pointsModel = pointsModel;
   }

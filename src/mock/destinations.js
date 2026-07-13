@@ -3,7 +3,12 @@ export const mockDestinations = [
     'id': 'cfe416cq-10xa-ye10-8077-2fs9a01edcab',
     'description': '',
     'name': 'Amsterdam',
-    'pictures': []
+    'pictures': [
+      {
+        'src': 'img/photos/4.jpg',
+        'description': 'Geneva parliament building'
+      }
+    ]
   },
   {
     'id': 'cfe416cq-10xa-ye10-8077-2fs9a01edcab2',
@@ -11,15 +16,15 @@ export const mockDestinations = [
     'name': 'Geneva',
     'pictures': [
       {
-        'src': 'https://picsum.photos/800/600?random=1',
+        'src': 'img/photos/2.jpg',
         'description': 'Geneva parliament building'
       },
       {
-        'src': 'https://picsum.photos/800/600?random=2',
+        'src': 'img/photos/1.jpg',
         'description': 'Geneva parliament building'
       },
       {
-        'src': 'https://picsum.photos/800/600?random=3',
+        'src': 'img/photos/3.jpg',
         'description': 'Geneva parliament building'
       }
     ]
@@ -30,7 +35,7 @@ export const mockDestinations = [
     'name': 'Chamonix',
     'pictures': [
       {
-        'src': 'https://picsum.photos/800/600?random=1',
+        'src': 'img/photos/5.jpg',
         'description': 'Chamonix parliament building'
       }
     ]
