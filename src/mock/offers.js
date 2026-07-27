@@ -5,24 +5,24 @@ export const mockOffers = [
     'type': 'taxi',
     'offers': [
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa31',
-        'title': 'Upgrade to a business class',
-        'price': getRandomInteger(100, 1000)
+        'id': 'taxi-offer-1',
+        'title': 'Business class',
+        'price': getRandomInteger(500, 800)
       },
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa32',
-        'title': 'Add luggage',
-        'price': getRandomInteger(100, 1000)
+        'id': 'taxi-offer-2',
+        'title': 'With a pet',
+        'price': getRandomInteger(100, 200)
       },
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa33',
-        'title': 'Add meal',
-        'price': getRandomInteger(100, 1000)
+        'id': 'taxi-offer-3',
+        'title': 'With a child',
+        'price': getRandomInteger(100, 300)
       },
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa34',
-        'title': 'Choose seats',
-        'price': getRandomInteger(100, 1000)
+        'id': 'taxi-offer-4',
+        'title': 'Premium class',
+        'price': getRandomInteger(800, 1000)
       }
     ]
   },
@@ -30,24 +30,24 @@ export const mockOffers = [
     'type': 'bus',
     'offers': [
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa31',
-        'title': 'Upgrade to a business class',
-        'price': getRandomInteger(100, 1000)
+        'id': 'bus-offer-1',
+        'title': 'With a pet',
+        'price': getRandomInteger(100, 300)
       },
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa32',
-        'title': 'Add luggage',
-        'price': getRandomInteger(100, 1000)
+        'id': 'bus-offer-2',
+        'title': 'Business class',
+        'price': getRandomInteger(700, 1000)
       },
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa33',
-        'title': 'Add meal',
-        'price': getRandomInteger(100, 1000)
+        'id': 'bus-offer-3',
+        'title': 'Large luggage',
+        'price': getRandomInteger(200, 500)
       },
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa34',
+        'id': 'bus-offer-4',
         'title': 'Choose seats',
-        'price': getRandomInteger(100, 1000)
+        'price': getRandomInteger(100, 300)
       }
     ]
   },
@@ -55,24 +55,24 @@ export const mockOffers = [
     'type': 'train',
     'offers': [
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa31',
-        'title': 'Upgrade to a business class',
-        'price': getRandomInteger(100, 1000)
+        'id': 'train-offer-1',
+        'title': 'With a pet',
+        'price': getRandomInteger(100, 300)
       },
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa32',
-        'title': 'Add luggage',
-        'price': getRandomInteger(100, 1000)
+        'id': 'train-offer-2',
+        'title': 'Business class',
+        'price': getRandomInteger(700, 1000)
       },
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa33',
-        'title': 'Add meal',
-        'price': getRandomInteger(100, 1000)
+        'id': 'train-offer-3',
+        'title': 'Individual meals',
+        'price': getRandomInteger(200, 300)
       },
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa34',
+        'id': 'train-offer-4',
         'title': 'Choose seats',
-        'price': getRandomInteger(100, 1000)
+        'price': getRandomInteger(100, 200)
       }
     ]
   },
@@ -80,9 +80,14 @@ export const mockOffers = [
     'type': 'ship',
     'offers': [
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa34',
-        'title': 'Choose seats',
-        'price': getRandomInteger(100, 1000)
+        'id': 'ship-offer-1',
+        'title': 'Individual meals',
+        'price': getRandomInteger(100, 500)
+      },
+      {
+        'id': 'ship-offer-2',
+        'title': 'Business class',
+        'price': getRandomInteger(700, 1000)
       }
     ]
   },
@@ -90,9 +95,14 @@ export const mockOffers = [
     'type': 'drive',
     'offers': [
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa32',
-        'title': 'Add luggage',
-        'price': getRandomInteger(100, 1000)
+        'id': 'drive-offer-1',
+        'title': 'Business class',
+        'price': getRandomInteger(100, 400)
+      },
+      {
+        'id': 'drive-offer-2',
+        'title': 'Premium class',
+        'price': getRandomInteger(700, 1000)
       }
     ]
   },
@@ -100,14 +110,14 @@ export const mockOffers = [
     'type': 'flight',
     'offers': [
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa33',
-        'title': 'Add meal',
-        'price': getRandomInteger(100, 1000)
+        'id': 'flight-offer-1',
+        'title': 'Individual meals',
+        'price': getRandomInteger(100, 500)
       },
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa34',
-        'title': 'Choose seats',
-        'price': getRandomInteger(100, 1000)
+        'id': 'flight-offer-2',
+        'title': 'Business class',
+        'price': getRandomInteger(700, 1000)
       }
     ]
   },
@@ -119,9 +129,14 @@ export const mockOffers = [
     'type': 'sightseeing',
     'offers': [
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa32',
-        'title': 'Add luggage',
-        'price': getRandomInteger(100, 1000)
+        'id': 'sightseeing-offer-1',
+        'title': 'Medium tour',
+        'price': getRandomInteger(100, 500)
+      },
+      {
+        'id': 'sightseeing-offer-1',
+        'title': 'Large tour',
+        'price': getRandomInteger(700, 1000)
       }
     ]
   },
@@ -129,10 +144,15 @@ export const mockOffers = [
     'type': 'restaurant',
     'offers': [
       {
-        'id': 'b4c3e4e6-9053-42ce-b747-e281314baa32',
-        'title': 'Add luggage',
-        'price': getRandomInteger(100, 1000)
-      }
+        'id': 'restaurant-offer-1',
+        'title': 'Medium set',
+        'price': getRandomInteger(800, 1000)
+      },
+      {
+        'id': 'restaurant-offer-2',
+        'title': 'Premium set',
+        'price': getRandomInteger(100, 500)
+      },
     ]
   },
 ];

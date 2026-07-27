@@ -2,28 +2,28 @@ import { getRandomInteger, getRandomArrayElement } from '../utils';
 
 const mockPoints = [
   {
-    'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c',
+    'id': 'point-1',
     'basePrice': getRandomInteger(100, 1000),
     'dateFrom': '2019-07-10T22:55:56.845Z',
     'dateTo': '2019-07-10T23:51:13.375Z',
-    'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
+    'destination': 'amsterdam-destination-1',
     'isFavorite': false,
     'offers': [
-      'b4c3e4e6-9053-42ce-b747-e281314baa31',
-      'b4c3e4e6-9053-42ce-b747-e281314baa32',
-      'b4c3e4e6-9053-42ce-b747-e281314baa33'
+      'taxi-offer-1',
+      'taxi-offer-2'
     ],
     'type': 'taxi'
   },
   {
-    'id': 'f4b62099-293f-4c3d-a702-94eec4a2808c2',
+    'id': 'point-2',
     'basePrice': getRandomInteger(100, 1000),
     'dateFrom': '2019-07-11T01:55:56.845Z',
     'dateTo': '2019-07-11T02:45:13.375Z',
-    'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
+    'destination': 'amsterdam-destination-1',
     'isFavorite': false,
     'offers': [
-      'b4c3e4e6-9053-42ce-b747-e281314baa34'
+      'bus-offer-1',
+      'bus-offer-2',
     ],
     'type': 'bus'
   },
@@ -32,10 +32,11 @@ const mockPoints = [
     'basePrice': getRandomInteger(100, 1000),
     'dateFrom': '2019-07-11T03:55:56.845Z',
     'dateTo': '2019-07-11T04:11:13.375Z',
-    'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
+    'destination': 'amsterdam-destination-1',
     'isFavorite': false,
     'offers': [
-      'b4c3e4e6-9053-42ce-b747-e281314baa33'
+      'train-offer-1',
+      'train-offer-4'
     ],
     'type': 'train'
   },
@@ -44,10 +45,10 @@ const mockPoints = [
     'basePrice': getRandomInteger(100, 1000),
     'dateFrom': '2019-07-11T05:55:56.845Z',
     'dateTo': '2019-07-11T06:16:13.375Z',
-    'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
+    'destination': 'geneva-destination-2',
     'isFavorite': false,
     'offers': [
-      'b4c3e4e6-9053-42ce-b747-e281314baa34'
+      'ship-offer-1'
     ],
     'type': 'ship'
   },
@@ -56,10 +57,10 @@ const mockPoints = [
     'basePrice': getRandomInteger(100, 1000),
     'dateFrom': '2019-07-11T07:55:56.845Z',
     'dateTo': '2019-07-11T08:22:13.375Z',
-    'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
+    'destination': 'geneva-destination-2',
     'isFavorite': false,
     'offers': [
-      'b4c3e4e6-9053-42ce-b747-e281314baa31'
+      'drive-offer-1'
     ],
     'type': 'drive'
   },
@@ -68,10 +69,10 @@ const mockPoints = [
     'basePrice': getRandomInteger(100, 1000),
     'dateFrom': '2019-07-11T09:55:56.845Z',
     'dateTo': '2019-07-11T10:33:13.375Z',
-    'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
+    'destination': 'geneva-destination-2',
     'isFavorite': false,
     'offers': [
-      'b4c3e4e6-9053-42ce-b747-e281314baa33'
+      'flight-offer-1'
     ],
     'type': 'flight'
   },
@@ -80,7 +81,7 @@ const mockPoints = [
     'basePrice': getRandomInteger(100, 1000),
     'dateFrom': '2019-07-08T11:55:56.845Z',
     'dateTo': '2019-07-08T12:05:13.375Z',
-    'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
+    'destination': 'chamonix-destination-3',
     'isFavorite': false,
     'offers': [],
     'type': 'check-in'
@@ -90,10 +91,10 @@ const mockPoints = [
     'basePrice': getRandomInteger(100, 1000),
     'dateFrom': '2019-07-10T13:55:56.845Z',
     'dateTo': '2019-07-10T14:14:13.375Z',
-    'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
+    'destination': 'chamonix-destination-3',
     'isFavorite': false,
     'offers': [
-      'b4c3e4e6-9053-42ce-b747-e281314baa31'
+      'sightseeing-offer-1'
     ],
     'type': 'sightseeing'
   },
@@ -102,10 +103,10 @@ const mockPoints = [
     'basePrice': getRandomInteger(100, 1000),
     'dateFrom': '2019-07-09T15:55:56.845Z',
     'dateTo': '2019-07-09T16:58:13.375Z',
-    'destination': 'bfa5cb75-a1fe-4b77-a83c-0e528e910e04',
+    'destination': 'chamonix-destination-3',
     'isFavorite': false,
     'offers': [
-      'b4c3e4e6-9053-42ce-b747-e281314baa31'
+      'restaurant-offer-1'
     ],
     'type': 'restaurant'
   }
